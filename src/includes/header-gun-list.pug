@@ -1,0 +1,25 @@
+
+section.gun-menu.flex
+	.gun-menu__side-menu.flex-dc.mr-1.pt-3
+		- const buttons = ['favorites', 'all']
+		each btn in buttons
+			append variables
+			- const type = btn
+			include ui/gun-list/live-list-point
+
+	//- тут всё сильно зависит от того, в каком виде  будут приходить данные с апишки
+	//- общим списком или нет
+	//- я "выбрал" вариант, где весь пул пушек будет подгружаться общим массивом в стор.
+	//- следовательно, нам надо найти ТОПЧИК для первой позиции
+	//- а потом циклом раскрутить массив на элементы
+	append variables
+	- const item = JSONguns.find(el => el.topDrop ? el : null)
+	include ui/gun-list/gun-item
+
+	ul.gun-menu__gun-list.flex.hide-scroll.pt-3
+		each gun in JSONguns
+			if !gun.topDrop
+				append variables
+				- const item = gun
+				li
+					include ui/gun-list/gun-item

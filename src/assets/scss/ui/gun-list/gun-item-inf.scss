@@ -1,0 +1,228 @@
+@import "../../_colors.scss";
+@import "../../_vars.scss";
+@import "../../_mixins.scss";
+
+$infBorder: 2px;
+$infBorderHover: 4px;
+
+@mixin infBordder($borderColor, $bgColor, $tooltipBgColor) {
+    background: $borderColor;
+
+    .bg {
+        background: $bgColor;
+    }
+
+    .tooltip {
+        background: $tooltipBgColor;
+    }
+}
+@mixin infItemImg {
+    padding: $infBorder;
+    transition: $transition;
+    border-radius: inherit;
+}
+
+.gun-item {
+    // .gun-item .inf-box
+    .inf-box {
+        position: absolute;
+        top: 73px;
+        left: 0;
+        right: 0;
+        gap: 16px;
+        justify-content: flex-end;
+        opacity: 0;
+        transition: $transition;
+        pointer-events: none;
+        z-index: 5;
+    }
+
+    // .gun-item:hover
+    @include hover {
+        // .gun-item:hover .inf-box
+        & .inf-box {
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+
+    // .gun-item .inf-item
+    .inf-item {
+        position: relative;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        transition: $transition;
+
+        // .gun-item .inf-item .bg
+        .bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: inherit;
+            padding: $infBorder;
+            transition: $transition;
+        }
+
+        // .gun-item .inf-item img
+        img {
+            position: relative;
+            width: 48px;
+            height: auto;
+            object-fit: none;
+            z-index: 1;
+
+            // .gun-item .inf-item img:nth-child(2)
+            &:nth-child(2) {
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                bottom: 0;
+            }
+        }
+
+        // .gun-item .inf-item .tooltip
+        .tooltip {
+            top: 45px;
+            z-index: -1;
+        }
+
+        // .gun-item .inf-item:hover
+        @include hover {
+            // .gun-item .inf-item:hover .bg
+            .bg {
+                padding: $infBorderHover;
+            }
+
+            // .gun-item .inf-item:hover .tooltip
+            .tooltip {
+                opacity: 1;
+            }
+        }
+
+        // .gun-item .inf-item.cases
+        &.cases {
+            @include infBordder(
+                linear-gradient(90deg, #7d36ff 0%, #3900a1 100%),
+                (
+                    linear-gradient(0deg, rgba(0, 0, 0, 0.64) 0%, rgba(0, 0, 0, 0.64) 100%) content-box,
+                    linear-gradient(0deg, #5119b8 0%, #8847ff 100%) content-box
+                ),
+                linear-gradient(90deg, #380b9d 0%, #490475 100%)
+            );
+
+            // .gun-item .inf-item.cases img
+            img {
+                width: 64px;
+            }
+        }
+
+        // .gun-item .inf-item.profile
+        &.profile {
+            @include infBordder(
+                radial-gradient(174.06% 116.18% at 50% -16.18%, #3f0061 0%, #31004d 100%) border-box,
+                none,
+                linear-gradient(90deg, #380b9d 0%, #490475 100%)
+            );
+
+            // .gun-item .inf-item.profile img
+            img {
+                @include infItemImg;
+            }
+
+            // .gun-item .inf-item.profile:hover
+            @include hover {
+                // .gun-item .inf-item.profile:hover img
+                img {
+                    padding: $infBorderHover;
+                }
+            }
+        }
+
+        // .gun-item .inf-item.upgrades
+        &.upgrades {
+            @include infBordder(
+                $color5,
+                linear-gradient(90deg, #380694 0%, #1a0443 100%) content-box,
+                linear-gradient(270deg, #4f0857 0%, #b111c4 100%)
+            );
+        }
+
+        // .gun-item .inf-item.contracts
+        &.contracts {
+            @include infBordder(
+                $color4,
+                linear-gradient(90deg, #380694 0%, #1a0443 100%) content-box,
+                linear-gradient(90deg, #7d36ff 0%, #3900a1 100%)
+            );
+        }
+
+        // .gun-item .inf-item.events
+        &.events {
+            @include infBordder(
+                $color4 border-box,
+                none,
+                linear-gradient(0deg, rgba(50, 9, 88, 0.32) 0%, rgba(50, 9, 88, 0.32) 100%)
+            );
+
+            // .gun-item .inf-item.events img
+            img {
+                // .gun-item .inf-item.events img:first-child
+                &:first-child {
+                    @include infItemImg;
+                }
+
+                // .gun-item .inf-item.events img:nth-child(2)
+                &:nth-child(2) {
+                    top: 4px;
+                    right: -4px;
+                    left: -4px;
+                    width: 56px;
+                }
+            }
+
+            // .gun-item .inf-item.events:hover
+            @include hover {
+                // .gun-item .inf-item.events:hover img:first-child
+                img:first-child {
+                    padding: $infBorderHover;
+                }
+            }
+        }
+
+        // .gun-item .inf-item.giveaway
+        &.giveaway {
+            @include infBordder(
+                $color4,
+                linear-gradient(90deg, #380b9d 0%, #490475 100%) content-box,
+                linear-gradient(90deg, #380b9d 0%, #490475 100%)
+            );
+
+            // .gun-item .inf-item.giveaway img
+            img {
+                top: -1px;
+                left: -2px;
+                width: 60px;
+            }
+        }
+
+        // .gun-item .inf-item.pass
+        &.pass {
+            @include infBordder(
+                $color5,
+                linear-gradient(90deg, #380b9d 0%, #490475 100%) content-box,
+                linear-gradient(90deg, #380b9d 0%, #490475 100%)
+            );
+
+            // .gun-item .inf-item.pass img
+            img {
+                top: -1px;
+                left: -2px;
+                width: 60px;
+            }
+        }
+    }
+}

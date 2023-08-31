@@ -1,0 +1,37 @@
+block variables
+
+mixin rednerInf(e, t)
+    span.inf-item.flex-center(class=e)
+        img(src="assets/img/gun-list/inf/" + e + ".svg" alt=e)
+        span.bg
+        span.tooltip= t
+
+mixin rednerInfDubleImg(e, t)
+    span.inf-item(class=e)
+        img(src="assets/img/gun-list/inf/" + e + "_bg.svg" alt=e)
+        img(src="assets/img/gun-list/inf/" + e + "_text.svg" alt=e)
+        span.bg
+        span.tooltip= t
+
+mixin caseInf(el)
+    case el
+        when 'cases'
+            +rednerInf(el, "К кейсу")
+        when 'profile'
+            +rednerInf(el, "К профилю")
+        when 'upgrades'
+            +rednerInf(el, "К апгрейдам")
+        when 'contracts'
+            +rednerInf(el, "К контрактам")
+        when 'events'
+            +rednerInfDubleImg(el, "К ивентам")
+        when 'giveaway'
+            +rednerInf(el, "К раздаче")
+        when 'pass'
+            +rednerInf(el, "В Боевой Пропуск")
+
+
+span.inf-box.flex.mx-4
+    each elem in inf
+        +caseInf(elem)
+

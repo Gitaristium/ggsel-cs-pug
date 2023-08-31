@@ -1,0 +1,273 @@
+@import "../../_colors.scss";
+@import "../../_vars.scss";
+@import "../../_mixins.scss";
+
+.gun-item {
+    position: relative;
+    display: block;
+    width: 128px;
+    min-width: 128px;
+    height: 80px;
+    border-radius: 12px;
+    pointer-events: all;
+    background-color: #120d2d;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+
+    // .gun-item::before
+    &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: inherit;
+    }
+
+    // .gun-item::after
+    &::after {
+        position: absolute;
+        content: "";
+        background-color: #23293366;
+        border-radius: 9px;
+        top: 3px;
+        right: 3px;
+        bottom: 3px;
+        left: 3px;
+        z-index: 2;
+    }
+
+    // .gun-item .honey
+    .honey {
+        background-color: #120d2d;
+        background-image: url(../../../assets/img/gun-list/sota-pattern-mask-gun.svg);
+        border-radius: 9px;
+        height: calc(100% - 6px);
+        left: 3px;
+        pointer-events: none;
+        position: absolute;
+        top: 3px;
+        width: calc(100% - 6px);
+        z-index: 2;
+    }
+    // .gun-item.topdrop
+    &.topdrop {
+        width: 192px;
+        min-width: 192px;
+        height: 80px;
+    }
+
+    // .gun-item .topdrop-border
+    .topdrop-border {
+        background: red;
+        position: absolute;
+        background: url(../../../assets/img/gun-list/topdrop-border.svg) no-repeat 0 0;
+        background-size: 100%;
+        height: calc(100% + 4px);
+        left: -2px;
+        top: -2px;
+        width: calc(100% + 4px);
+        z-index: -1;
+        border-radius: inherit;
+        transition: $transition;
+    }
+
+    // .gun-item.color-#
+    &.color {
+        @for $i from 1 through length($colors) {
+            &--#{$i} {
+                background-image: linear-gradient(180deg, rgba(nth($colors, $i), 0.12), rgba(nth($colors, $i), 0.5));
+
+                // .gun-item.color-#::before
+                &::before {
+                    background-image: linear-gradient(180deg, rgba(nth($colors, $i), 0.32), nth($colors, $i));
+                }
+
+                // .gun-item.color-#::after
+                &::after {
+                    background-image: radial-gradient(
+                        circle 95px at 50.14% 129.77%,
+                        rgba(nth($colors, $i), 0.5) 0,
+                        rgba(nth($colors, $i), 0.3) 50%,
+                        transparent 100%
+                    );
+                }
+            }
+        }
+    }
+
+    // .gun-item .cover
+    .cover {
+        position: absolute;
+        top: -6px;
+        right: -9px;
+        left: -5px;
+        width: 142px;
+        height: -webkit-fill-available;
+        object-fit: none;
+        object-position: top;
+        transition: $transition;
+        z-index: 5;
+    }
+
+    // .gun-item.topdrop .cover
+    &.topdrop .cover {
+        width: 170px;
+        left: unset;
+    }
+
+    // .gun-item .desc
+    .desc {
+        position: relative;
+        gap: 2px;
+        justify-content: flex-end;
+        height: 100%;
+        padding: 6px;
+        z-index: 5;
+
+        // .gun-item .desc__time-ago
+        &__time-ago {
+            color: rgba($titleColor, 0.8);
+            text-shadow: 0px 2px 3px #13072c;
+            font-family: "Roboto Condensed", sans-serif;
+            font-size: 10px;
+            font-weight: 400;
+            line-height: 14px; /* 140% */
+        }
+
+        // .gun-item .desc__item-type
+        &__item-type {
+            color: #fff;
+            text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.8);
+            font-size: 10px;
+            font-weight: 400;
+            line-height: 8px; /* 80% */
+            transition: $transition;
+        }
+
+        // .gun-item .desc__name
+        &__name {
+            color: #fff;
+            text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.8);
+            font-family: "Roboto Condensed", sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 12px; /* 100% */
+        }
+
+        // .gun-item .desc__percent
+        &__percent {
+            width: fit-content;
+            color: #f7c0fe;
+            background: rgba(15, 3, 27, 0.5);
+            font-weight: 400;
+
+            // .gun-item .desc__percent.small
+            &.small {
+                height: 16px;
+                padding: 0px 4px;
+                border-radius: 6px;
+                font-family: "Roboto Condensed", sans-serif;
+                font-size: 10px;
+                font-style: normal;
+                line-height: 12px; /* 120% */
+            }
+
+            // .gun-item .desc__percent.medium
+            &.medium {
+                height: 20px;
+                padding: 0px 6px;
+                border-radius: 8px;
+                font-size: 12px;
+                line-height: normal;
+            }
+
+            // .gun-item .desc__percent.large
+            &.large {
+                height: 24px;
+                padding: 0px 12px;
+                border-radius: 8px;
+                font-size: 16px;
+                line-height: normal;
+            }
+        }
+    }
+
+    // .gun-item:not(.tooltip) .desc
+    &:not(.topdrop) .desc {
+        // .gun-item:not(.tooltip) .desc__time-ago
+        // .gun-item:not(.tooltip) .desc__item-type
+        // .gun-item:not(.tooltip) .desc__name
+        &__time-ago,
+        &__item-type,
+        &__name {
+            opacity: 0;
+            transition: $transition;
+        }
+    }
+
+    // .gun-item:hover
+    @include hover {
+        // .gun-item:hover .desc
+        .desc {
+            // .gun-item:hover .desc__time-ago
+            // .gun-item:hover .desc__item-type
+            &__time-ago,
+            &__item-type {
+                opacity: 0.8;
+            }
+            // .gun-item:hover .desc__name
+            &__name {
+                opacity: 1;
+            }
+        }
+
+        // .gun-item:hover .cover
+        .cover {
+            transform: translateY(-10px);
+        }
+
+        // .gun-item:hover .topdrop-border
+        .topdrop-border {
+            background: url(../../../assets/img/gun-list/topdrop-border-hover.svg) no-repeat 0 0;
+        }
+    }
+
+    // .gun-item .topdrop-bar
+    .topdrop-bar {
+        $height: 28px;
+        position: absolute;
+        align-items: center;
+        bottom: -$height - 2;
+        right: 0;
+        width: 226px;
+        height: $height;
+        color: #fff;
+        font-feature-settings:
+            "clig" off,
+            "liga" off;
+        text-shadow:
+            0px 0px 14.243903160095215px $color6,
+            0.59px 0 $color6,
+            -0.59px 0 $color6,
+            0 0.59px $color6,
+            0 -0.59px $color6,
+            0.59px 0.59px $color6,
+            -0.59px -0.59px $color6,
+            0.59px -0.59px $color6,
+            -0.59px 0.59px $color6;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 20px; /* 153.846% */
+        text-transform: uppercase;
+        background: linear-gradient(90deg, #5b00a3 0%, #7200cb 33.05%, #3d0079 60.89%, rgba(43, 0, 121, 0) 100%);
+        mask-image: url(../img/gun-list/topdrop-mask.svg);
+        mask-size: cover;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-border: 3px solid transparent;
+        padding-left: 36px;
+        z-index: -1;
+    }
+}

@@ -1,0 +1,14 @@
+block variables
+//- предустановим активную кнопку
+//- в дальнейшем надо поменять определение по значению роута или стейта
+//- и не забыть вырезать скрипт на эти кнопки из `live-list-point.js`
+button.live-list-point(class=type === "favorites" && "active", data-type=type)
+
+    if type === 'favorites'
+        span.material-icons star
+    else
+        span.material-icons apps
+
+
+
+

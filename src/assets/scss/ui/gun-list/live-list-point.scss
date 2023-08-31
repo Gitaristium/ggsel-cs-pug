@@ -1,0 +1,97 @@
+@import "../../_colors.scss";
+@import "../../_vars.scss";
+@import "../../_mixins.scss";
+
+$border: 1px;
+$borderRadius: 8px;
+
+.gun-menu__side-menu {
+    // .gun-menu__side-menu .live-list-point
+    .live-list-point {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        background: #050b1652;
+        transition: $transition;
+
+        // .gun-menu__side-menu .live-list-point:first-child
+        &:first-child {
+            border-radius: 0px $borderRadius 0px 0px;
+        }
+
+        // .gun-menu__side-menu .live-list-point:last-child
+        &:last-child {
+            border-radius: 0px 0px $borderRadius 0px;
+        }
+
+        // .gun-menu__side-menu .live-list-point::before
+        // .gun-menu__side-menu .live-list-point::after
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: inherit;
+            z-index: -1;
+            transition: $transition;
+        }
+
+        // .gun-menu__side-menu .live-list-point::after
+        &:after {
+            opacity: 0;
+        }
+
+        // .gun-menu__side-menu .live-list-point span
+        span {
+            background: linear-gradient(0deg, #90939a 0%, #4c515c 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: $transition;
+        }
+
+        // .gun-menu__side-menu .live-list-point:hover
+        @include hover {
+            // .gun-menu__side-menu .live-list-point:hover::after
+            &:after {
+                opacity: 1;
+                background: linear-gradient(90deg, #323c99 0%, #151d6b 100%);
+            }
+
+            // .gun-menu__side-menu .live-list-point:hover span
+            span {
+                background: linear-gradient(0deg, #597bca 0%, #94b5ff 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+
+        // .gun-menu__side-menu .live-list-point.active
+        // .gun-menu__side-menu .live-list-point:active
+        &.active,
+        &:active {
+            background: #1b1806 padding-box;
+            border: solid $border transparent;
+
+            // .gun-menu__side-menu .live-list-point.active::before
+            // .gun-menu__side-menu .live-list-point:active::before
+            &:before {
+                margin: -$border;
+                background: linear-gradient(180deg, rgba(255, 198, 0, 0.2) 0%, #ffc600 100%);
+            }
+
+            // .gun-menu__side-menu .live-list-point.active span
+            // .gun-menu__side-menu .live-list-point:active span
+            span {
+                background: var(--icon-gradient-yellow, linear-gradient(315deg, #ff9c0e 0%, #ffd800 100%));
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+    }
+}

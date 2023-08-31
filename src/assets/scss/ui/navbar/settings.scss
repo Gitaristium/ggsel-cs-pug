@@ -1,0 +1,284 @@
+@import "../../_colors.scss";
+@import "../../_vars.scss";
+@import "../../_mixins.scss";
+
+$borderRadius: 8px;
+
+.settings {
+    user-select: none;
+
+    // .settings .btn
+    // .settings .lang
+    .btn,
+    .lang {
+        // .settings .btn::before
+        // .settings .lang::before
+        &::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: inherit;
+            background: linear-gradient(270deg, rgba(240, 71, 255, 0.16) 0%, rgba(136, 71, 255, 0.16) 100%);
+            opacity: 0;
+            pointer-events: none;
+            transition: $transition;
+        }
+    }
+
+    // .settings .btn
+    .btn {
+        position: relative;
+        height: 48px;
+        width: 48px;
+        padding: $borderRadius;
+        border-radius: $borderRadius;
+        box-shadow: inset 0 0 0 2px rgba($color4, 0.08);
+        transition: $transition;
+        cursor: pointer;
+
+        // .settings .btn span
+        span {
+            color: rgba(230, 155, 255, 0.4);
+            transition: $transition;
+        }
+
+        // .settings .btn.volume
+        &.volume {
+            border-radius: 0px $borderRadius $borderRadius 0px;
+
+            // .settings .btn.volume .on
+            & .on {
+                display: block;
+            }
+
+            // .settings .btn.volume .off
+            & .off {
+                display: none;
+            }
+
+            // .settings .btn.volume.active
+            &.active {
+                // .settings .btn.volume.active .on
+                & .on {
+                    display: none;
+                }
+
+                // .settings .btn.volume.active .off
+                & .off {
+                    display: block;
+                }
+            }
+        }
+
+        // .settings .btn:hover
+        @include hover {
+            box-shadow: none;
+
+            // .settings .btn:hover span
+            span {
+                color: rgba(230, 155, 255, 0.8);
+            }
+
+            // .settings .btn:hover::before
+            &::before {
+                opacity: 1;
+            }
+        }
+
+        // .settings .btn:active
+        // .settings .btn.active
+        &:active,
+        &.active {
+            box-shadow: none;
+
+            // .settings .btn:active span
+            // .settings .btn.active span
+            span {
+                color: rgba(211, 44, 230, 0.4);
+            }
+
+            // .settings .btn:active::before
+            // .settings .btn.active::before
+            &::before {
+                opacity: 1;
+            }
+        }
+    }
+
+    .lang {
+        position: relative;
+        border-radius: $borderRadius 0px 0px $borderRadius;
+
+        // ================================================
+        // дальше не сильно читаемые стили,
+        // потому что подтянул их вместе со скриптом для селектора
+        // ну и настроил/покрасил под себя
+        // ================================================
+        .select-selected {
+            box-shadow: inset 0 0 0 2px rgba($color4, 0.08);
+            border-radius: inherit;
+            height: 48px;
+            width: 76px;
+            transition: $transition;
+            display: flex;
+            justify-self: center;
+            align-items: center;
+            color: rgba($inputLang, 0.4);
+            padding: $borderRadius $borderRadius * 4 $borderRadius $borderRadius * 2;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: normal;
+            cursor: pointer;
+        }
+
+        /* Style the arrow inside the select element: */
+        .select-selected:after {
+            position: absolute;
+            content: "";
+            top: 22px;
+            right: 14px;
+            width: 0;
+            height: 0;
+            border: 4px solid transparent;
+            border-color: rgba($inputLang, 0.4) transparent transparent transparent;
+            transform-origin: 4px 2px;
+            transition: $transition;
+        }
+
+        @include hover {
+            .select-selected {
+                box-shadow: none;
+                color: rgba($inputLang, 0.8);
+
+                &::after {
+                    border-color: rgba($inputLang, 0.8) transparent transparent transparent;
+                }
+            }
+
+            &::before {
+                opacity: 1;
+            }
+        }
+
+        &:has(.select-arrow-active):not(:hover) {
+            .select-selected {
+                box-shadow: none;
+                color: rgba($inputLang, 0.8);
+
+                &::after {
+                    border-color: rgba($inputLang, 0.8) transparent transparent transparent;
+                }
+            }
+            &::before {
+                opacity: 1;
+            }
+        }
+
+        /* Point the arrow upwards when the select box is open (active): */
+        .select-selected.select-arrow-active:after {
+            transform: rotate(180deg);
+        }
+
+        .select-items {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            border-radius: $borderRadius;
+            padding: $borderRadius 0;
+            background: linear-gradient(270deg, rgba(240, 71, 255, 0.16) 0%, rgba(136, 71, 255, 0.16) 100%), #13072c;
+            box-shadow:
+                0px 28px 64px 0px rgba(50, 50, 50, 0.2),
+                0px 20px 28px 0px #13072c;
+            top: calc(100% + $borderRadius);
+            right: 0;
+            width: auto;
+            z-index: 99;
+        }
+
+        /* style the items (options), including the selected item: */
+        .select-items div {
+            position: relative;
+            display: flex;
+            padding: $borderRadius $borderRadius * 2 $borderRadius $borderRadius * 7;
+            align-items: center;
+            color: $menuTextStatic;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: normal;
+            background: radial-gradient(3200% 50% at 50% 50%, rgba(117, 55, 0, 0.02) 0%, rgba(57, 15, 99, 0) 100%);
+            background: radial-gradient(50% 3200% at 50% 50%, rgba(117, 55, 0, 0.019) 0, rgba(57, 15, 99, 0) 100%);
+            cursor: pointer;
+            transition: $transition;
+
+            &::before {
+                position: absolute;
+                content: "";
+                top: 10px;
+                left: $borderRadius * 2;
+                width: 20px;
+                height: 15px;
+            }
+
+            // вообще конечно же это надо через `data` атрибуты вешать
+            // но как уже писал в комментах - я честно скомуниздил готовый скрипт для селектора
+            // и не вижу смысла тратить на него время для тестового,
+            // но на девелопе конечно без таких костылей! ;)
+            &.ru::before {
+                background: url(../img/flags/ru.svg);
+            }
+            &.en::before {
+                background: url(../img/flags/en.svg);
+            }
+            &.tr::before {
+                background: url(../img/flags/tr.svg);
+            }
+            &.de::before {
+                background: url(../img/flags/de.svg);
+            }
+            &.pl::before {
+                background: url(../img/flags/pl.svg);
+            }
+            &.pt::before {
+                background: url(../img/flags/pt.svg);
+            }
+
+            &:not(:first-child)::after {
+                background: radial-gradient(50% 3200% at 50% 50%, rgba(117, 55, 0, 0.19) 0, rgba(57, 15, 99, 0) 100%);
+                content: "";
+                display: block;
+                height: 1px;
+                left: 0;
+                left: 50%;
+                mix-blend-mode: normal;
+                position: absolute;
+                top: 0;
+                transform: translateX(-50%);
+                width: 100%;
+            }
+
+            @include hover {
+                color: $menuTextHover;
+                background: radial-gradient(3200% 50% at 50% 50%, rgba(117, 55, 0, 0.19) 0%, rgba(57, 15, 99, 0) 100%);
+            }
+            &.same-as-selected {
+                color: $color5;
+                background: radial-gradient(3200% 50% at 50% 50%, rgba(111, 0, 123, 0.4) 0%, rgba(57, 15, 99, 0) 100%);
+            }
+        }
+
+        /* Hide the items when the select box is closed: */
+        .select-hide {
+            display: none;
+        }
+    }
+
+    // .settings select
+    // .settings input
+    select,
+    input {
+        display: none;
+    }
+}

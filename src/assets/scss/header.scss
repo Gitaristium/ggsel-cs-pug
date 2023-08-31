@@ -1,0 +1,70 @@
+@import "_colors.scss";
+@import "_vars.scss";
+@import "_mixins.scss";
+
+header {
+    // header .up
+    .up {
+        border: 1px solid rgba(252, 221, 255, 0.16);
+        background: linear-gradient(180deg, #13072c 42.07%, rgba(19, 7, 44, 0) 66.71%),
+            linear-gradient(90deg, #3f0449 0%, #250a53 23.08%, #2e0a53 73.34%, #250569 100%), #13072c;
+    }
+
+    // header .down
+    .down {
+        background: linear-gradient(180deg, #13072c 50%, rgba(19, 7, 44, 0) 100%);
+    }
+
+    // header .gun-menu
+    .gun-menu {
+        position: relative;
+        border-top: 1px solid rgba(252, 221, 255, 0.16);
+        border-bottom: 1px solid rgba(252, 221, 255, 0.16);
+        background: linear-gradient(180deg, #120d2d 90.83%, rgba(0, 0, 0, 0) 100%);
+        z-index: 1;
+
+        // header .gun-menu__side-menu
+        &__side-menu {
+            border-radius: 0px 8px 8px 0px;
+            width: fit-content;
+            z-index: 1;
+        }
+
+        // header .gun-menu__nav-gun
+        &__nav-gun {
+            width: -webkit-fill-available;
+        }
+
+        // header .gun-menu__gun-list
+        &__gun-list {
+            $offsetY: 55px;
+            overflow-x: auto;
+            padding-bottom: $offsetY;
+            margin-bottom: -$offsetY;
+            pointer-events: none;
+        }
+    }
+
+    // header .navbar
+    .navbar {
+        position: relative;
+        height: 108px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+
+        // header .navbar__logo
+        &__logo {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        // header .navbar__profile
+        &__profile {
+            height: 80px;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+        }
+    }
+}

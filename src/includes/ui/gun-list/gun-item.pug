@@ -1,0 +1,30 @@
+block variables
+
+a.gun-item(href='#', class=item.topDrop ? "topdrop mt-4 mr-2 mb-2 ml-1" : "mr-1" class='color--' + item.color)
+    .honey
+    if item.topDrop
+        .topdrop-border
+    img.cover(src="assets/img/gun-list/guns/" + item.img, alt=item.name)
+
+    .desc.flex-dc
+        span.desc__time-ago= item.timeAgo
+        h5.desc__item-type= item.itemType
+        h4.desc__name= item.name
+        if item.percent
+            span.desc__percent.small.flex-center= item.percent + '%'
+
+    if item.icon
+        append variables
+        - const icon = item.icon
+        include gun-item-icon
+
+    append variables
+    - const inf = item.inf
+    include gun-item-inf
+
+    if item.topDrop
+        span.topdrop-bar.flex TOP DROP
+
+
+
+

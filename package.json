@@ -1,0 +1,25 @@
+{
+    "name": "ggsel-cs-pug",
+    "version": "1.0.0",
+    "description": "тестовое задание",
+    "main": "gulpfile.js",
+    "homepage": "https://gitaristium.github.io/ggsel-cs-pug",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Gitaristium",
+    "license": "ISC",
+    "devDependencies": {
+        "@prettier/plugin-pug": "^3.0.0",
+        "browser-sync": "^2.29.3",
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^8.0.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-pug": "^5.0.0",
+        "gulp-sass": "^5.1.0",
+        "jquery": "^3.7.1",
+        "prettier": "^3.0.2",
+        "reset-css": "^5.0.2",
+        "sass": "^1.66.1"
+    }
+}

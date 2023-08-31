@@ -1,0 +1,26 @@
+block variables
+
+
+a.item.flex-dc(href="#" class='color--' + item.color) 
+    .honey
+    img.cover(src="assets/img/gun-list/guns/" + item.img, alt=item.name)
+
+    .desc.flex-dc
+        span.desc__heading.mb-9= item.heading
+        h5.desc__item-type= item.itemType
+        h4.desc__name.mb-6= item.name
+        span.flex
+            span.desc__clock.flex.mr-2
+                span.material-icons.clock-icon.flex-center schedule
+                span.desc__clock-days.ml-3.mr-2= item.daysToEnd
+                span.desc__clock-time.mr-4= item.timeToEnd
+            span.desc__quantitiy.flex
+                span.material-icons.mr-3 group
+                = item.quantitiy
+
+    if item.icon && item.icon === 'open'
+        append variables
+        - const icon = item.icon
+        include gun-list/gun-item-icon
+
+

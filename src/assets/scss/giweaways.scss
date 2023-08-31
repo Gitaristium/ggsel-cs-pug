@@ -1,0 +1,292 @@
+@import "_colors.scss";
+@import "_vars.scss";
+@import "_mixins.scss";
+
+$borderRadius: 12px;
+
+.giveaways {
+    // .giveaways .title
+    .title {
+        width: 40px;
+        height: 125px;
+        border-radius: 0px 12px 12px 0px;
+        border-top: 2px solid #591b78;
+        border-right: 2px solid #591b78;
+        border-bottom: 2px solid #591b78;
+        background: #270637;
+        color: #fff;
+        text-align: center;
+        font-feature-settings:
+            "clig" off,
+            "liga" off;
+        text-shadow: 0px 0px 18px $color5;
+
+        // .giveaways .title span
+        span {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 20px; /* 111.111% */
+            text-transform: uppercase;
+            transform: rotate(-90deg);
+        }
+    }
+
+    // .giveaways .content
+    .content {
+        width: 100%;
+        gap: 2px;
+
+        // .giveaways .content li
+        li {
+            width: 100%;
+        }
+
+        // .giveaways .content .item
+        .item {
+            position: relative;
+            width: 100%;
+            height: 125px;
+            padding: $borderRadius;
+            border-radius: $borderRadius;
+            background: #17023a;
+            min-width: 335px;
+
+            // .giveaways .content .item::before
+            &::before {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                transition: $transition;
+                z-index: 2;
+                border-radius: inherit;
+                pointer-events: none;
+            }
+
+            // .giveaways .content .item .honey
+            .honey {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                pointer-events: none;
+                border-radius: inherit;
+                transition: $transition;
+
+                // .giveaways .content .item .bg::before
+                &::before {
+                    position: absolute;
+                    background: url(../img/gun-list/sota-pattern-bg.svg);
+                    content: "";
+                    display: block;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    bottom: 0;
+                    mask: url(../img/gun-list/sota-pattern-mask.svg);
+                    mask-position: 50% 50%;
+                    opacity: 1;
+                    width: 100%;
+                    pointer-events: none;
+                    transition: $transition;
+                }
+            }
+
+            // .giveaways .content .item.color-#
+            &.color {
+                @for $i from 1 through length($colors) {
+                    &--#{$i} {
+                        // .giveaways .content .item.color-#::before
+                        &::before {
+                            box-shadow: inset 0 0 0 2px rgba(nth($colors, $i), 0.2);
+                        }
+
+                        // .giveaways .content .item.color-# .honey
+                        .honey {
+                            background: linear-gradient(1turn, rgba(nth($colors, $i), 0.2), rgba(nth($colors, $i), 0)),
+                                #17023a;
+
+                            // .giveaways .content .item.color-# .honey::before
+                            &::before {
+                                background-color: nth($colors, $i);
+                            }
+                        }
+
+                        // .giveaways .content .item.color-#:hover
+                        @include hover {
+                            // .giveaways .content .item.color-#:hover::before
+                            &::before {
+                                box-shadow: inset 0 0 0 2px rgba(nth($colors, $i), 0.4);
+                            }
+
+                            // .giveaways .content .item.color-#:hover .honey
+                            .honey {
+                                background: linear-gradient(
+                                        1turn,
+                                        rgba(nth($colors, $i), 0.4),
+                                        rgba(nth($colors, $i), 0)
+                                    ),
+                                    #17023a;
+                            }
+
+                            // .giveaways .content .item.color-#:hover .desc
+                            .desc {
+                                color: $titleColor;
+                            }
+
+                            // .giveaways .content .item.color-#:hover .cover
+                            .cover {
+                                margin-top: -10px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // .giveaways .content .item .desc
+            .desc {
+                position: relative;
+                color: rgba($titleColor, 0.5);
+                transition: $transition;
+
+                // .giveaways .content .item .desc__heading
+                &__heading {
+                    position: relative;
+                    color: rgba($titleColor, 0.68);
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 16px; /* 114.286% */
+
+                    // .giveaways .content .item .desc__heading::before
+                    &::before {
+                        content: "";
+                        display: block;
+                        height: 2px;
+                        left: 0;
+                        background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+                        opacity: 0.2;
+                        position: absolute;
+                        top: calc(100% + 8px);
+                        width: 220px;
+                    }
+                }
+
+                // .giveaways .content .item .desc__item-type
+                &__item-type {
+                    color: rgba($titleColor, 0.68);
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 16px; /* 114.286% */
+                }
+
+                // .giveaways .content .item .desc__name
+                &__name {
+                    color: $titleColor;
+                    font-feature-settings:
+                        "clig" off,
+                        "liga" off;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-size: 14px;
+                    font-weight: 700;
+                    line-height: 16px; /* 114.286% */
+                }
+
+                // .giveaways .content .item .desc__clock
+                // .giveaways .content .item .desc__quantitiy
+                &__clock,
+                &__quantitiy {
+                    align-items: center;
+                    border-radius: 8px;
+                    background: rgba(19, 7, 44, 0.32);
+                    backdrop-filter: blur(4px);
+                    padding: 4px 8px 4px 4px;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 16px; /* 114.286% */
+                }
+
+                // .giveaways .content .item .desc__clock .clock-icon
+                &__clock .clock-icon {
+                    background: #fef2c8;
+                    border-radius: 50%;
+                    box-shadow: 0 0 12px 1px #ff2c3b;
+                    color: #ff2c3b;
+                    font-size: 17px;
+                    font-size: 20px;
+                    height: 16px;
+                    width: 16px;
+                    margin: 0 6px 0 -1px;
+                }
+
+                // .giveaways .content .item .desc__clock-days
+                &__clock-days {
+                    color: #fef2c8;
+                    text-shadow:
+                        1px 0 #eb4b4b7a,
+                        -1px 0 #eb4b4b7a,
+                        0 1px #eb4b4b7a,
+                        0 -1px #eb4b4b7a,
+                        1px 1px #eb4b4b7a,
+                        -1px -1px #eb4b4b7a,
+                        1px -1px #eb4b4b7a,
+                        -1px 1px #eb4b4b7a;
+                }
+
+                // .giveaways .content .item .desc__clock-time
+                // .giveaways .content .item .desc__quantitiy
+                &__clock-time,
+                &__quantitiy {
+                    // .giveaways .content .item .desc__clock-time span
+                    // .giveaways .content .item .desc__quantitiy span
+                    span {
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            // .giveaways .content .item .cover
+            .cover {
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 2;
+                transition: $transition;
+                pointer-events: none;
+
+                @include media(1700) {
+                    height: 100%;
+                    width: auto;
+                }
+            }
+
+            // .giveaways .content .item .icon
+            .icon {
+                position: absolute;
+                height: 24px;
+                width: 24px;
+                right: 12px;
+                bottom: 12px;
+                border-radius: 12px;
+                border: 2px solid var(--green, #06c50c);
+                background: linear-gradient(90deg, #005700 0%, #089408 100%);
+                z-index: 1;
+
+                // .giveaways .content .item .icon img
+                img {
+                    width: 16px;
+                    height: 16px;
+                    bottom: calc(50% - 8px);
+                    left: calc(50% - 8px);
+                }
+            }
+        }
+    }
+}

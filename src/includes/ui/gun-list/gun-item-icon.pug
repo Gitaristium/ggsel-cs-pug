@@ -1,0 +1,27 @@
+block variables
+
+mixin rednerIcon(i, t)
+    span.icon.flex-center(class=i)
+        img(src="assets/img/gun-list/icons/" + i + ".svg", alt=i)
+        span.tooltip.flex-center= t
+
+case icon
+    when 'await'
+        +rednerIcon(icon, "Ожидает решения")
+    when 'sold'
+        +rednerIcon(icon, "Продано")
+    when 'withdrawn'
+        +rednerIcon(icon, "Выведено")
+    when 'contracts'
+        +rednerIcon(icon, "В контрактах")
+    when 'upgrades'
+        +rednerIcon(icon, "В апгрейдах")
+    when 'events'
+        +rednerIcon(icon, "Breezy Event")
+    when 'giveaway'
+        +rednerIcon(icon, "Give Away")
+    when 'open'
+        +rednerIcon(icon, "Открыто")
+
+
+

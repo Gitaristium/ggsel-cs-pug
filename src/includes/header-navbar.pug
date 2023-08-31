@@ -1,0 +1,30 @@
+nav.navbar.flex.mt-8.hide-scroll 
+    a(href="#").navbar__logo.flex-center.p-8
+        img(src="assets/img/logo.png" alt="logo")
+
+    include ui/navbar/live-now
+
+    append variables
+    - const settingsClass = 'navbar__settings'
+    include ui/navbar/settings
+
+    ul.navbar__menu.flex-center
+        - const menuLinks = [{type:'earn', text:"ЗАРАБОТАТЬ"}, {type:'raffle', text:"РОЗЫГРЫШ", mark:'new'}, {type:'contracts', text:"КОНТРАКТЫ"}, {type:'upgrades', text:"АПГРЕЙДЫ"}]
+        each menuLink in menuLinks
+            append variables
+            - const link = menuLink
+            li
+                include ui/navbar/menu-link
+
+    append variables
+    - const inputClass = 'navbar__search'
+    include ui/navbar/search-input
+
+    .navbar__profile.flex.p-8
+        - const prifileButtons = [{type:'steam', text:"Войти"}, {type:'facebook'},{type:'google'}]
+        each prifileButton in prifileButtons
+            append variables
+            - const btn = prifileButton
+            include ui/navbar/profile-btn
+
+

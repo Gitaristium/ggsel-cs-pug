@@ -1,0 +1,149 @@
+@import "../../_colors.scss";
+@import "../../_vars.scss";
+@import "../../_mixins.scss";
+
+.navbar__menu {
+    // .navbar__menu .link
+    .link {
+        position: relative;
+        align-items: center;
+        gap: 5px;
+        width: 120px;
+        height: 80px;
+        padding: 0px 4px;
+        justify-content: center;
+        z-index: 0;
+
+        // .navbar__menu .link img
+        svg {
+            width: 32px;
+            height: 32px;
+            padding: 4px;
+
+            // .navbar__menu .link img path
+            path {
+                fill: $color7;
+                transition: $transition;
+            }
+        }
+
+        // .navbar__menu .link__text
+        &__text {
+            color: $textColor;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 12px; /* 100% */
+            letter-spacing: 0.325px;
+            text-transform: uppercase;
+            transition: $transition;
+        }
+
+        // .navbar__menu .link::before
+        &::before {
+            position: absolute;
+            content: "";
+            width: 112px;
+            height: 112px;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(117, 55, 0, 0.48) 0%, rgba(57, 15, 99, 0.0001) 100%);
+            z-index: -1;
+            filter: blur(20px);
+            transition: $transition;
+        }
+
+        // .navbar__menu .link__active-point
+        &__active-point {
+            position: absolute;
+            top: -11px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: $color5;
+            opacity: 0;
+            transition: $transition;
+        }
+
+        // .navbar__menu .link:hover
+        @include hover {
+            // .navbar__menu .link:hover svg path
+            svg path {
+                fill: $menuTextHover;
+            }
+
+            // .navbar__menu .link:hover .link__text
+            .link__text {
+                color: $menuTextHover;
+            }
+
+            // .navbar__menu .link:hover::before
+            &::before {
+                background: radial-gradient(
+                    50% 50% at 50% 50%,
+                    rgba(117, 55, 0, 0.48) 0%,
+                    rgba(57, 15, 99, 0.0001) 100%
+                );
+            }
+        }
+
+        // .navbar__menu .link:active
+        // .navbar__menu .link.active
+        &:active,
+        &.active {
+            // .navbar__menu .link:active svg path
+            // .navbar__menu .link.active svg path
+            svg path {
+                fill: $color5;
+            }
+
+            // .navbar__menu .link:active .link__text
+            // .navbar__menu .link.active .link__text
+            .link__text {
+                color: $color5;
+            }
+
+            // .navbar__menu .link:active::before
+            // .navbar__menu .link.active::before
+            &::before {
+                background: radial-gradient(50% 50% at 50% 50%, #6f007b 0%, rgba(57, 15, 99, 0.0001) 100%);
+            }
+
+            // .navbar__menu .link:active::before .link__active-point
+            // .navbar__menu .link.active::before .link__active-point
+            .link__active-point {
+                top: 3px;
+                opacity: 1;
+            }
+        }
+
+        // .navbar__menu .link__mark
+        &__mark {
+            position: absolute;
+            top: 14px;
+            left: 0;
+            width: 47px;
+            height: 16px;
+            background: url("../img/navbar/mark-bg.svg") center no-repeat;
+            transform: rotate(-15deg);
+            color: #1d0933;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 12px; /* 100% */
+            text-transform: uppercase;
+        }
+    }
+
+    li + li .link::after {
+        position: absolute;
+        content: "";
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 1px;
+        opacity: 0.2;
+        background: radial-gradient(5600% 50% at 50% 50%, #b0c3d9 0%, rgba(176, 195, 217, 0.0001) 100%);
+    }
+}

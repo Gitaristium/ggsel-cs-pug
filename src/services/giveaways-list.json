@@ -1,0 +1,50 @@
+[
+    {
+        "id": 0,
+        "img": "balance.svg",
+        "itemType": "Dual Berettas",
+        "name": "Баланс",
+        "heading": "Ежедневная #38",
+        "daysToEnd": "0 д.",
+        "timeToEnd": "03 : 59 : 13",
+        "quantitiy": 398,
+        "icon": "open",
+        "color": 2
+    },
+    {
+        "id": 1,
+        "img": "cerberus.svg",
+        "itemType": "Galil AR",
+        "name": "Cerberus",
+        "heading": "Ежедневная #21",
+        "daysToEnd": "0 д.",
+        "timeToEnd": "05 : 13 : 09",
+        "quantitiy": 408,
+        "icon": "",
+        "color": 4
+    },
+    {
+        "id": 2,
+        "img": "ak-47-neon.svg",
+        "itemType": "AK-47",
+        "name": "Neon Rider",
+        "heading": "Еженедельная",
+        "daysToEnd": "5 д.",
+        "timeToEnd": "12 : 07 : 11",
+        "quantitiy": 977,
+        "icon": "",
+        "color": 6
+    },
+    {
+        "id": 3,
+        "img": "gloves-1.svg",
+        "itemType": "★ Bloodhound Gloves",
+        "name": "Bronzed",
+        "heading": "Еженедельная",
+        "daysToEnd": "1 д.",
+        "timeToEnd": "10 : 23 : 30",
+        "quantitiy": 977,
+        "icon": "open",
+        "color": 7
+    }
+]

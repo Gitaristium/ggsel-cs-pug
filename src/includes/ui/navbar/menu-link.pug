@@ -1,0 +1,17 @@
+block variables
+
+a(href="#").link.flex-dc
+    case link.type
+        when 'earn'
+            include ../../../assets/img/navbar/earn.svg
+        when 'raffle'
+            include ../../../assets/img/navbar/raffle.svg
+        when 'contracts'
+            include ../../../assets/img/navbar/contracts.svg
+        when 'upgrades'
+            include ../../../assets/img/navbar/upgrades.svg
+
+    span.link__text=link.text
+    if link.mark
+        span.link__mark.flex-center=link.mark
+    span.link__active-point

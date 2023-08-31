@@ -1,0 +1,113 @@
+@import "_colors.scss";
+@import "_vars.scss";
+@import "_mixins.scss";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+body {
+    background: $bgColor;
+    color: $textColor;
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a,
+button,
+.remove-select {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    text-decoration: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-dc {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hide-scroll {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+
+    // .hide-scroll::-webkit-scrollbar
+    &::-webkit-scrollbar {
+        display: none !important;
+    }
+}
+
+.tooltip {
+    position: absolute;
+    padding: $tooltipPanding;
+    gap: 10px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px; /* 114.286% */
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: $transition;
+    z-index: 1;
+}
+
+main {
+    position: relative;
+    background:
+        url(../img/main-bg-text.svg) center no-repeat,
+        url(../img/main-bg.webp) center no-repeat;
+    background-size: 70%, cover;
+    height: 100%;
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
+    z-index: -1;
+    margin-top: -50px;
+
+    // main::before
+    &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, #240943 12.76%, rgba(38, 9, 70, 0) 33.15%),
+            radial-gradient(28.23% 112.22% at 50% 58.59%, rgba(7, 11, 89, 0.288) 45.82%, rgba(69, 68, 117, 0) 94.24%);
+    }
+}

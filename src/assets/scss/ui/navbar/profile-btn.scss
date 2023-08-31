@@ -1,0 +1,180 @@
+@import "../../_colors.scss";
+@import "../../_vars.scss";
+@import "../../_mixins.scss";
+
+@mixin btnColor($bgColor, $borderColor, $bgColorHover, $borderColorHover) {
+    background: $bgColor;
+    box-shadow: $borderColor;
+
+    &::before {
+        background: $bgColorHover;
+        box-shadow: $borderColor;
+    }
+
+    @include hover {
+        &::before {
+            box-shadow: $borderColorHover;
+        }
+    }
+}
+
+.navbar__profile {
+    // .navbar__profile button
+    button {
+        position: relative;
+        padding: 4px;
+        gap: 4px;
+        border-radius: 6px;
+        color: #13072c;
+        text-align: center;
+        font-feature-settings:
+            "clig" off,
+            "liga" off;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 16px; /* 100% */
+        transition: $transition;
+
+        // .navbar__profile button img
+        img {
+            z-index: 1;
+        }
+
+        // .navbar__profile button .text
+        .text {
+            width: 88px;
+            z-index: 1;
+        }
+
+        // .navbar__profile button::before
+        &::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: inherit;
+            opacity: 0;
+            transition: $transition;
+        }
+
+        // .navbar__profile button:hover
+        @include hover {
+            // .navbar__profile button:hover::before
+            &::before {
+                opacity: 1;
+            }
+        }
+
+        // .navbar__profile button.steam
+        &.steam {
+            @include btnColor(
+                (
+                    linear-gradient(180deg, rgba(255, 92, 0, 0.4) 0%, rgba(255, 92, 0, 0) 100%),
+                    linear-gradient(0deg, #ffc600 0%, #ffc600 100%),
+                    #13072c
+                ),
+                (
+                    0px -3px 0px 0px #c88400 inset,
+                    0px 2px 0px 0px rgba(255, 255, 255, 0.4) inset,
+                    0px 6px 12px 0px rgba(5, 0, 16, 0.5)
+                ),
+                (
+                    linear-gradient(180deg, rgba(255, 92, 0, 0.4) 0%, rgba(255, 92, 0, 0) 100%),
+                    linear-gradient(0deg, #ffd33a 0%, #ffd33a 100%),
+                    #13072c
+                ),
+                (
+                    0px -2px 0px 0px #c88400 inset,
+                    0px 2px 0px 0px rgba(255, 255, 255, 0.4) inset,
+                    0px 6px 12px 0px rgba(5, 0, 16, 0.5)
+                )
+            );
+
+            @include media(1475) {
+                & .text {
+                    display: none;
+                }
+            }
+        }
+
+        // .navbar__profile button.vk
+        &.vk {
+            @include btnColor(
+                (
+                    linear-gradient(180deg, rgba(0, 71, 255, 0.4) 0%, rgba(0, 71, 255, 0) 100%),
+                    linear-gradient(0deg, #279aff 0%, #279aff 100%),
+                    #13072c
+                ),
+                (
+                    0px -3px 0px 0px #0f49b7 inset,
+                    0px 2px 0px 0px rgba(255, 255, 255, 0.4) inset,
+                    0px 6px 12px 0px rgba(5, 0, 16, 0.5)
+                ),
+                (
+                    linear-gradient(180deg, rgba(0, 71, 255, 0.4) 0%, rgba(0, 71, 255, 0) 100%),
+                    linear-gradient(0deg, #58b1ff 0%, #58b1ff 100%),
+                    #13072c
+                ),
+                (
+                    0px -2px 0px 0px #0f49b7 inset,
+                    0px 2px 0px 0px rgba(255, 255, 255, 0.4) inset,
+                    0px 6px 12px 0px rgba(5, 0, 16, 0.5)
+                )
+            );
+        }
+
+        // .navbar__profile button.facebook
+        &.facebook {
+            @include btnColor(
+                (
+                    linear-gradient(180deg, rgba(20, 0, 255, 0.4) 0%, rgba(97, 0, 255, 0) 100%),
+                    linear-gradient(0deg, #717fff 0%, #717fff 100%),
+                    #13072c
+                ),
+                (
+                    0px -3px 0px 0px #3440ae inset,
+                    0px 2px 0px 0px rgba(255, 255, 255, 0.4) inset,
+                    0px 6px 12px 0px rgba(5, 0, 16, 0.5)
+                ),
+                (
+                    linear-gradient(180deg, rgba(20, 0, 255, 0.4) 0%, rgba(97, 0, 255, 0) 100%),
+                    linear-gradient(0deg, #8894ff 0%, #8894ff 100%),
+                    #13072c
+                ),
+                (
+                    0px -2px 0px 0px #3440ae inset,
+                    0px 2px 0px 0px rgba(255, 255, 255, 0.4) inset,
+                    0px 6px 12px 0px rgba(5, 0, 16, 0.5)
+                )
+            );
+        }
+
+        // .navbar__profile button.google
+        &.google {
+            @include btnColor(
+                (
+                    linear-gradient(180deg, rgba(119, 115, 171, 0.4) 0%, rgba(250, 252, 255, 0) 100%),
+                    linear-gradient(0deg, #e4ecf1 0%, #e4ecf1 100%),
+                    #13072c
+                ),
+                (
+                    0px -3px 0px 0px #97a3a8 inset,
+                    0px 2px 0px 0px rgba(255, 255, 255, 0.4) inset,
+                    0px 6px 12px 0px rgba(5, 0, 16, 0.5)
+                ),
+                (
+                    linear-gradient(180deg, rgba(119, 115, 171, 0.4) 0%, rgba(250, 252, 255, 0) 100%),
+                    linear-gradient(0deg, #fff 0%, #fff 100%),
+                    #13072c
+                ),
+                (
+                    0px -2px 0px 0px #97a3a8 inset,
+                    0px 2px 0px 0px rgba(255, 255, 255, 0.4) inset,
+                    0px 6px 12px 0px rgba(5, 0, 16, 0.5)
+                )
+            );
+        }
+    }
+}

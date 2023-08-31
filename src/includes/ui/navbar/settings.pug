@@ -1,0 +1,19 @@
+block variables
+
+
+form#settings.settings.flex(class=settingsClass)
+    button#call.btn.flex-center.call.mr-6
+        span.material-icons support_agent
+    span.lang.custom-select.flex-center.mr-2
+        select
+            option(value='RU', selected= false) RU
+            option(value='EN', selected= true) EN
+            option(value='TR', selected= false) TR
+            option(value='DE', selected= false) DE
+            option(value='PL', selected= false) PL
+            option(value='PT', selected= false) PT
+        //- span.material-icons.arrow.flex-center arrow_drop_down
+    label#volume-label.btn.volume.flex-center(for='volume')
+        span.material-icons.on volume_up
+        span.material-icons.off volume_off
+    input#volume(type="checkbox" name='volume' checked)

@@ -1,0 +1,10 @@
+section.giveaways.flex.mt-3
+    h3.title.flex-center 
+        span giveaways
+
+    ul.content.flex.mx-2
+        each elem in JSONgiveaways
+            append variables
+            - const item = elem
+            li
+                include ui/giveaways-item

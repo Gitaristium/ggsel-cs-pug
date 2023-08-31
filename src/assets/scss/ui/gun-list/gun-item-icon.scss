@@ -1,0 +1,139 @@
+@import "../../_colors.scss";
+@import "../../_vars.scss";
+@import "../../_mixins.scss";
+
+$iconBorder: 2px;
+$iconBorderHover: 3px;
+
+@mixin iconBordder($c) {
+    box-shadow: inset 0px 0px 0px $iconBorder $c;
+
+    @include hover {
+        box-shadow: inset 0px 0px 0px $iconBorderHover $c;
+    }
+}
+
+.gun-item {
+    // .gun-item .icon
+    .icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        transition: $transition;
+        z-index: 5;
+
+        // .gun-item .icon img
+        img {
+            width: 14px;
+            height: 14px;
+            z-index: 1;
+        }
+
+        // .gun-item .icon .tooltip
+        .tooltip {
+            top: 16px;
+            left: 16px;
+        }
+
+        // .gun-item .icon:hover
+        @include hover {
+            // .gun-item .icon:hover .tooltip
+            & .tooltip {
+                opacity: 1;
+            }
+        }
+
+        // .gun-item .icon.await
+        &.await {
+            // здесь веротяно ошибка в UI-ките. у этой иконки контур в 4px, у всех остальных в 2px
+            // я решил делать под одну гребёнку. вообще конечно такое надо уточнять у диза
+            background: linear-gradient(90deg, #26003e 0%, #230170 100%);
+            @include iconBordder(rgba(40, 4, 161, 0.24));
+
+            // .gun-item .icon.await .tooltip
+            .tooltip {
+                background: linear-gradient(270deg, #26003e 0%, #230170 100%);
+            }
+        }
+
+        // .gun-item .icon.sold
+        &.sold {
+            background: linear-gradient(90deg, #005700 0%, #089408 100%);
+            @include iconBordder($greenColor);
+
+            // .gun-item .icon.sold .tooltip
+            .tooltip {
+                background: linear-gradient(90deg, #00bc00 0%, #039803 100%);
+            }
+        }
+
+        // .gun-item .icon.withdraw
+        &.withdrawn {
+            background: linear-gradient(90deg, #002e87 0%, #0652ff 100%);
+            @include iconBordder($color2);
+
+            // .gun-item .icon.withdraw .tooltip
+            .tooltip {
+                background: linear-gradient(90deg, #0370ff 0%, #0652ff 100%);
+            }
+        }
+
+        // .gun-item .icon.contracts
+        &.contracts {
+            background: linear-gradient(90deg, #2e0675 0%, #5b17d8 100%);
+            @include iconBordder($color4);
+
+            // .gun-item .icon.contracts .tooltip
+            .tooltip {
+                background: linear-gradient(90deg, #7d36ff 0%, #3900a1 100%);
+            }
+        }
+
+        // .gun-item .icon.upgrades
+        &.upgrades {
+            background: linear-gradient(90deg, #4f0857 0%, #b111c4 100%);
+            @include iconBordder($color5);
+
+            // .gun-item .icon.upgrades .tooltip
+            .tooltip {
+                background: linear-gradient(270deg, #4f0857 0%, #b111c4 100%);
+            }
+        }
+
+        // .gun-item .icon.events
+        &.events {
+            background: linear-gradient(90deg, #120014 0%, #4a0053 100%);
+            @include iconBordder($color4);
+
+            // .gun-item .icon.events .tooltip
+            .tooltip {
+                background: linear-gradient(90deg, #380b9d 0%, #490475 100%);
+            }
+        }
+
+        // .gun-item .icon.giveaway
+        &.giveaway {
+            background: linear-gradient(270deg, #13072c 0%, #220462 100%);
+            @include iconBordder(#2e008d);
+
+            // .gun-item .icon.giveaway .tooltip
+            .tooltip {
+                background: linear-gradient(90deg, #380b9d 0%, #490475 100%);
+            }
+        }
+
+        // .gun-item .icon.open
+        &.open {
+            background: linear-gradient(90deg, #005700 0%, #089408 100%);
+            @include iconBordder($greenColor);
+
+            // .gun-item .icon.open .tooltip
+            .tooltip {
+                background: linear-gradient(90deg, #00bc00 0%, #039803 100%);
+            }
+        }
+    }
+}
