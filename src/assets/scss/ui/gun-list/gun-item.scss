@@ -41,7 +41,7 @@
     // .gun-item .honey
     .honey {
         background-color: #120d2d;
-        background-image: url(../../../assets/img/gun-list/sota-pattern-mask-gun.svg);
+        background-image: url(../../assets/img/gun-list/sota-pattern-mask-gun.svg);
         border-radius: 9px;
         height: calc(100% - 6px);
         left: 3px;
@@ -62,7 +62,7 @@
     .topdrop-border {
         background: red;
         position: absolute;
-        background: url(../../../assets/img/gun-list/topdrop-border.svg) no-repeat 0 0;
+        background: url(../../assets/img/gun-list/topdrop-border.svg) no-repeat 0 0;
         background-size: 100%;
         height: calc(100% + 4px);
         left: -2px;
@@ -230,7 +230,7 @@
 
         // .gun-item:hover .topdrop-border
         .topdrop-border {
-            background: url(../../../assets/img/gun-list/topdrop-border-hover.svg) no-repeat 0 0;
+            background: url(../../assets/img/gun-list/topdrop-border-hover.svg) no-repeat 0 0;
         }
     }
 
